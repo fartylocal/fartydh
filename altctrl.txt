@@ -1,3 +1,14 @@
+
+local b = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/fartylocal/fartydh/main/whitelist.txt", true))
+
+if b[tostring(game.Players.LocalPlayer.UserId)] == true then
+	print("Welcome, "..game.Players.LocalPlayer.Name)
+else
+	game.Players.LocalPlayer:Kick("You are not whitelisted! Buy or appeal here: https://discord.gg/3E8su47NX3")
+end
+
+
+
 local Testing = false
 -- Cmds
 if table.find(getgenv().Alts,game.Players.LocalPlayer.UserId) then
