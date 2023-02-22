@@ -160,7 +160,7 @@ print("Script loaded!")
 local CmdSettings = {}
 
 local function Drop(Type)
-	if Type == true and CmdSettings["Dropping"] == nil then
+	if Type == true and CmdSettings["Dropping"] == nil and b then
 		CmdSettings["Dropping"] = true
 		CmdSettings["CustomDrop"] = nil
 		CmdSettings["Aura"] = nil
@@ -220,7 +220,7 @@ local function BringPlr(Target,POS)
 		local Root = c.HumanoidRootPart
 		local PrevCF = Root.CFrame
 		local TargetChar = TargetPlr.Character
-		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true ) then
+		if TargetPlr and TargetPlr.Character and TargetPlr.Character:FindFirstChild("Humanoid") and not ( not c or not c:FindFirstChild("BodyEffects") or not c.BodyEffects:FindFirstChild("K.O") or not c.BodyEffects:FindFirstChild("Grabbed")  or c.BodyEffects["K.O"].Value == true or c.BodyEffects.Grabbed.Value ~= nil or not TargetChar or not TargetChar:FindFirstChild("BodyEffects") or not TargetChar.BodyEffects:FindFirstChild("K.O") or TargetChar.BodyEffects["K.O"].Value == true and b ) then
 			CmdSettings["IsLocking"] = true
 
 			c.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
@@ -530,7 +530,7 @@ local function Initiate()
 					wait(1)
 					setfpscap(60)	
 				end
-			elseif Args[1] == ".crash" and Args[2] == "encrypt" and not Crashed then
+			elseif Args[1] == ".crash" and Args[2] == "encrypt" and not Crashed and b then
 				local Player = GetPlayerFromString(Args[3],true)
 				if Player and Player == game.Players.LocalPlayer then
 					if game.CoreGui:FindFirstChild("RenderScreen") then
@@ -552,7 +552,7 @@ local function Initiate()
 					wait(1)
 					setfpscap(60)	
 				end
-			elseif Args[1] == ".crash" and Args[2] == "15min" and not Crashed then
+			elseif Args[1] == ".crash" and Args[2] == "15min" and not Crashed and b then
 				local Player = GetPlayerFromString(Args[3],true)
 				if Player and Player == game.Players.LocalPlayer then
 					if game.CoreGui:FindFirstChild("RenderScreen") then
@@ -607,7 +607,7 @@ local function Initiate()
 				if FoundPlayer then
 					BringPlr(FoundPlayer,nil)
 				end
-			elseif Message == ".setup bank" then
+			elseif Message == ".setup bank" and b then
 				Setup("Bank")
 			elseif Message == ".setup admin" then
 				Setup("Admin")
@@ -691,7 +691,7 @@ local function Initiate()
 				elseif c:FindFirstChild("Mask") then
 					c.Mask:Activate()
 				end
-			elseif Args[1] == ".aura" then
+			elseif Args[1] == ".aura" and b then
 				local Player = GetPlayerFromString(Args[2],true)
 				if Player and Player == game.Players.LocalPlayer then
 					if CmdSettings["Aura"] == nil then
