@@ -90,15 +90,6 @@ for i, e in pairs(l:GetChildren()) do
     end
 end
 
-local b = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/fartylocal/fartydh/main/whitelist.txt", true))
-
-if b[tostring(game.Players.LocalPlayer.UserId)] == true then
-	print("Welcome, "..game.Players.LocalPlayer.Name)
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/fartylocal/fartydh/main/lock.txt', true))()
-else
-	game.Players.LocalPlayer:Kick("You are not whitelisted! Buy or appeal here: https://discord.gg/3E8su47NX3")
-end
-
 local pltrn = Instance.new("Part")
 
 pltrn.Parent = game.Workspace
