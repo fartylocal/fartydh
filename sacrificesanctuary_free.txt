@@ -1,0 +1,73 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Fartygui_free = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local lavalake = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+Fartygui_free.Name = "Fartygui_free"
+Fartygui_free.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Fartygui_free.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = Fartygui_free
+Frame.BackgroundColor3 = Color3.fromRGB(124, 32, 149)
+Frame.Position = UDim2.new(0.454222858, 0, 0.474051893, 0)
+Frame.Size = UDim2.new(0, 207, 0, 90)
+
+lavalake.Name = "lavalake"
+lavalake.Parent = Frame
+lavalake.BackgroundColor3 = Color3.fromRGB(151, 39, 182)
+lavalake.Position = UDim2.new(0.0757348984, 0, 0.664191365, 0)
+lavalake.Size = UDim2.new(0, 175, 0, 20)
+lavalake.Font = Enum.Font.SourceSans
+lavalake.Text = "Finish"
+lavalake.TextColor3 = Color3.fromRGB(255, 255, 255)
+lavalake.TextSize = 14.000
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(151, 39, 182)
+TextLabel.Size = UDim2.new(0, 207, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Fartylocal sacrifice sanctury GUI. Only 5 of the games will be bypassed. Press F9 to view more."
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+-- Scripts:
+
+local function SMAIDI_fake_script() -- lavalake.LocalScript 
+	local script = Instance.new('LocalScript', lavalake)
+
+	local function abcd()
+	
+		local root = game.Players.LocalPlayer.Character.HumanoidRootPart
+	
+		if game.Workspace.Challenge:FindFirstChild("LavaLake") then
+			root.CFrame = CFrame.new(-276,-61,-70)
+	print("Bypassed LavaLake")
+		elseif game.Workspace.Challenge:FindFirstChild("RedLightGreenLight") then
+			root.CFrame = CFrame.new(-555,119,206)
+			print("Bypassed squidgame")
+		elseif game.Workspace.Challenge:FindFirstChild("GraveyardGoons") then
+			root.CFrame = CFrame.new(-36,-67,-19)
+			print("Bypassed GraveyardGoons")
+		elseif game.Workspace.Challenge:FindFirstChild("ConveyorLaser") then
+			root.CFrame = CFrame.new(-343,92,374)
+			print("Bypassed Conveyor obby")
+		elseif game.Workspace.Challenge:FindFirstChild("SchoolDropout") then
+			root.CFrame = CFrame.new(-138,-73,-150)
+			print("Bypassed School obby")
+		
+		end
+	end
+	
+	script.Parent.Activated:Connect(abcd)
+	
+end
+coroutine.wrap(SMAIDI_fake_script)()
