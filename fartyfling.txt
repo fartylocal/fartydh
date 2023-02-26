@@ -1,0 +1,167 @@
+
+local b = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/fartylocal/fartydh/main/whitelist.txt", true))
+
+if b[tostring(game.Players.LocalPlayer.UserId)] == true then
+	print("Welcome, "..game.Players.LocalPlayer.Name)
+else
+	game.Players.LocalPlayer:Kick("You are not whitelisted! Buy or appeal here: https://discord.gg/3E8su47NX3")
+end
+
+-- Instances:
+
+local fartyfling = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local TextBox = Instance.new("TextBox")
+local fa = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+fartyfling.Name = "fartyfling"
+fartyfling.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+fartyfling.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+fartyfling.ResetOnSpawn = false
+
+Frame.Parent = fartyfling
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(191, 100, 191)
+Frame.BorderColor3 = Color3.fromRGB(109, 67, 143)
+Frame.Draggable = true
+Frame.Position = UDim2.new(0.527709305, -101, 0.28644067, 127)
+Frame.Size = UDim2.new(0, 264, 0, 102)
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(221, 116, 221)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.738636613, 0, 0.344010919, 0)
+TextButton.Size = UDim2.new(0, 59, 0, 26)
+TextButton.Font = Enum.Font.Fantasy
+TextButton.Text = "Fling"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 14.000
+
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(167, 88, 167)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.0454545468, 0, 0.34401089, 0)
+TextBox.Size = UDim2.new(0, 176, 0, 26)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+
+fa.Name = "fa"
+fa.Parent = Frame
+fa.BackgroundColor3 = Color3.fromRGB(255, 105, 173)
+fa.BorderSizePixel = 0
+fa.Position = UDim2.new(0.0340909101, 0, 0.657283783, 0)
+fa.Size = UDim2.new(0, 245, 0, 26)
+fa.Font = Enum.Font.Fantasy
+fa.Text = "Fling all"
+fa.TextColor3 = Color3.fromRGB(0, 0, 0)
+fa.TextSize = 14.000
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0, 12, 0, 7)
+TextLabel.Size = UDim2.new(0, 242, 0, 19)
+TextLabel.Font = Enum.Font.Unknown
+TextLabel.Text = "fartylocal fling gui. .gg/3E8su47NX3"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 15.000
+TextLabel.TextWrapped = true
+
+-- Scripts:
+
+local function PBDC_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	local plr = game.Players.LocalPlayer
+	local players = game:GetService("Players")
+	local localPlayer = players.LocalPlayer
+	local player = game.Players.LocalPlayer
+	function fling()
+local players = game:GetService("Players")
+		local target = script.Parent.Parent.TextBox.Text
+		local torso = player.Character:FindFirstChild("Torso") or player.Character:FindFirstChild("UpperTorso")
+	if torso and b then
+		-- create a BodyAngularVelocity instance to make the torso spin quickly
+		local angularVelocity = Instance.new("BodyAngularVelocity")
+		angularVelocity.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+		angularVelocity.AngularVelocity = Vector3.new(0, 1000, 0) -- adjust the values to change the spinning speed
+		angularVelocity.P = 5000
+		angularVelocity.Parent = torso
+	
+		local bodyThrust = Instance.new("BodyThrust")
+		bodyThrust.Force = Vector3.new(1000,1000,1000)
+		bodyThrust.Location = game.Players[target].Character.UpperTorso.Position
+	
+		bodyThrust.Parent = game.Players.LocalPlayer.Character.UpperTorso
+		-- create a BodyPosition instance to freeze the torso in place
+		local bodyPosition = Instance.new("BodyPosition")
+		bodyPosition.Position = game.Players[target].Character.UpperTorso.Position
+		bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+		bodyPosition.Parent = torso
+	end
+	while true do
+		wait(0.1)
+		torso.BodyPosition.Position = game.Players[target].Character.UpperTorso.Position
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players[target].Character.UpperTorso.Position)
+	end
+	end
+	script.Parent.Activated:Connect(fling)
+end
+coroutine.wrap(PBDC_fake_script)()
+local function RMOSGNT_fake_script() -- fa.LocalScript 
+	local script = Instance.new('LocalScript', fa)
+
+	local plr = game.Players.LocalPlayer
+	local plrs = game.Players:GetChildren()
+	local localPlayer = plrs.LocalPlayer
+	local player = game.Players.LocalPlayer
+	local counter = 0
+	local counterfull = 10
+	function flingall()
+local players = game:GetService("Players")
+		local target = script.Parent.Parent.TextBox.Text
+		local torso = player.Character:FindFirstChild("Torso") or player.Character:FindFirstChild("UpperTorso")
+	if torso and b then
+		for i = 1, #plrs do
+				
+				local p = tostring(plrs[i].Name)
+				
+				local angularVelocitya = Instance.new("BodyAngularVelocity")
+				angularVelocitya.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+				angularVelocitya.AngularVelocity = Vector3.new(0, 1000, 0) -- adjust the values to change the spinning speed
+				angularVelocitya.P = 5000
+				angularVelocitya.Parent = torso
+	
+				local bodyThrusta = Instance.new("BodyThrust")
+				bodyThrusta.Force = Vector3.new(3000,0,0)
+				bodyThrusta.Location = game.Players[p].Character.UpperTorso.Position
+				bodyThrusta.Parent = game.Players.LocalPlayer.Character.UpperTorso
+				
+				-- create a BodyPosition instance to freeze the torso in place
+				local bodyPositiona = Instance.new("BodyPosition")
+				bodyPositiona.Position = game.Players[p].Character.UpperTorso.Position
+				bodyPositiona.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+				bodyPositiona.Parent = torso
+				while counter >= 0 do
+					
+					wait(0.1)
+					torso.BodyPosition.Position = game.Players[p].Character.UpperTorso.Position
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players[p].Character.UpperTorso.Position)
+					bodyPositiona.Position = game.Players[p].Character.UpperTorso.Position
+					bodyThrusta.Location = game.Players[p].Character.UpperTorso.Position
+					counter = counter - 1
+				end
+				counter = counterfull
+	end
+	end
+	end
+	script.Parent.Activated:Connect(flingall)
+end
+coroutine.wrap(RMOSGNT_fake_script)()
