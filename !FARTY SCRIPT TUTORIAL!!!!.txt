@@ -1,0 +1,8 @@
+SO BASICALLY YOU TAKE THIS
+
+loadstring(game:HttpGet("A"))()
+
+but you replace the "a" with the RAW script link 
+or just paste the script right from the github
+either works its just that imo the loadstring
+is better

